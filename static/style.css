@@ -1,9 +1,9 @@
 *, *::before, *::after {
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
-}
-
-body {
+  }
+  
+  body {
     padding: 0;
     margin: 0;
     display: flex;
@@ -12,19 +12,33 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: #333;
-}
-
-.container {
+  }
+  
+  .container {
     width: 800px;
     max-width: 80%;
-    background-color: #606060;
+    background-color: #a9a9a9;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px 2px;
-}
-
-.container input {
-    width: 100%;
+  }
+  
+  .btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
     margin-top: 20px;
-}
-
+  }
+  
+  .btn {
+    background-color: #d0d0d0;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: black;
+    outline: none;
+  }
+  
+  .btn:hover {
+    background-color: #444;
+  }
