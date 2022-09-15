@@ -40,6 +40,7 @@ function selectOption(option) {
 }
 
 const textNodes = [
+  // GROUND FLOOR
   {
     id: 0,
     text: 'Stai per iniziare una sessione di gioco testuale estremamente importante per le sorti del NEST. Sabato, ore 12:30, in questo momento ti trovi al piano terra, nella hall del NEST, front office chiuso. Uscire dal NEST non è un\'opzione.',
@@ -82,13 +83,13 @@ const textNodes = [
         text: '1',
         requiredState: (currentState) => currentState.floor !== 1,
         setState: { floor: 1 },
-        nextText: 1
+        nextText: 15
       },
       {
         text: '2',
         requiredState: (currentState) => currentState.floor !== 2,
         setState: { floor: 2 },
-        nextText: 1
+        nextText: 19
       },
       {
         text: '3',
@@ -119,11 +120,15 @@ const textNodes = [
       },
       {
         text: 'Entra in aula studio A',
-        nextText: 6
+        nextText: 8
       },
       {
         text: 'Vai più avanti',
-        nextText: 4
+        nextText: 10
+      },
+      {
+        text: 'Torna nella hall',
+        nextText: 1
       }
     ]
   },
@@ -182,44 +187,200 @@ const textNodes = [
   },
   {
     id: 8,
-    text: 'Your attempts to run are in vain and the monster easily catches.',
+    text: 'Ci sono persone che mangiano, la finestra è leggermente aperta.',
     options: [
       {
-        text: 'Restart',
-        nextText: -1
+        text: 'Prova ad uscire dalla finestra',
+        nextText: 9
+      },
+      {
+        text: 'Torna nel corridoio',
+        nextText: 3
       }
     ]
   },
   {
     id: 9,
-    text: 'You foolishly thought this monster could be slain with a single sword.',
+    text: 'Come detto prima uscire non è un\'opzione',
     options: [
       {
-        text: 'Restart',
+        text: 'Ricomincia il gioco',
         nextText: -1
       }
     ]
   },
   {
     id: 10,
-    text: 'The monster laughed as you hid behind your shield and ate you.',
+    text: 'Proseguendo nel corridoio inizi a sentire dei rumori.',
     options: [
       {
-        text: 'Restart',
+        text: 'Entra in aula studio C',
+        nextText: 11
+      },
+      {
+        text: 'Entra in sala video',
+        nextText: 12
+      },
+      {
+        text: 'Vai in auditorium',
+        nextText: 14
+      },
+      {
+        text: 'Torna indietro',
+        nextText: 3
+      },
+    ]
+  },
+  {
+    id: 11,
+    text: 'La stanza non è stata igienizzata sufficientemente, solo entrando hai contratto il covid. Non possiamo permetterci una quarantena come quella dell\'anno scorso.',
+    options: [
+      {
+        text: 'Ricomincia il gioco',
         nextText: -1
       }
     ]
   },
   {
-    id: 11,
-    text: 'You threw your jar of goo at the monster and it exploded. After the dust settled you saw the monster was destroyed. Seeing your victory you decide to claim this castle as your and live out the rest of your days there.',
+    id: 12,
+    text: 'Non c\'è nessuno, il mobile sotto il televisore sembra aperto...',
     options: [
       {
-        text: 'Congratulations. Play Again.',
+        text: 'Torna indietro',
+        nextText: 10
+      },
+      {
+        text: 'Controlla il mobiletto',
+        requiredState: (currentState) => !currentState.bigliettino,
+        nextText: 13
+      },
+    ]
+  },
+  {
+    id: 13,
+    text: 'C\'è un sacco nero pieno di salsicce, sopra un bigliettino con scritto sopra "Giardino Zen".',
+    options: [
+      {
+        text: 'Prendi il bigliettino e torna indietro',
+        setState: { bigliettino: true },
+        nextText: 12
+      }
+    ]
+  },
+  {
+    id: 14,
+    text: 'Davanti alla porta dell\'auditorium vedi un tastierino numerico, come se per entrare servisse una password.',
+    options: [
+      {
+        text: 'Torna indietro',
+        nextText: 10
+      },
+      {
+        text: '(non ho la password)',
+        requiredState: (currentState) => !currentState.password,
+        nextText: 10
+      },
+      {
+        text: 'Immetti 146 come password',
+        requiredState: (currentState) => currentState.password,
+        nextText: 100
+      },
+    ]
+  },
+
+  // FLOOR: 1
+  {
+    id: 15,
+    text: 'Ti trovi al primo piano, l\'aula studio 1 è ancora chiusa perché usata come deposito pacchi.',
+    options: [
+      {
+        text: 'Entra in aula relax 1',
+        nextText: 16
+      },
+      {
+        text: 'Di chi è quella bandiera in fondo al corridoio?',
+        nextText: 18
+      },
+      {
+        text: 'Torna agli ascensori',
+        nextText: 2
+      }
+    ]
+  },
+  {
+    id: 16,
+    text: 'Ci sono persone che studiano, meglio non disturbare.',
+    options: [
+      {
+        text: 'Torno indietro e prometto che non disturberò mai nessuno durante la sessione di esami',
+        nextText: 15
+      },
+      {
+        text: 'Mia madre lavora in via del Brennero',
+        nextText: 17
+      }
+    ]
+  },
+  {
+    id: 17,
+    text: 'Niente di personale, ma non meriti di finire il gioco.',
+    options: [
+      {
+        text: 'Ricomincia il gioco',
         nextText: -1
       }
     ]
-  }
+  },
+  {
+    id: 18,
+    text: 'Bussa più forte che puoi alle 2 di notte per scoprirlo.',
+    options: [
+      {
+        text: 'Lo farò!',
+        nextText: 15
+      }
+    ]
+  },
+
+  // FLOOR: 2
+  {
+    id: 19,
+    text: 'Ti trovi al secondo piano',
+    options: [
+      {
+        text: 'Entra in aula studio 2',
+        nextText: 20
+      },
+      {
+        text: 'Entra in aula relax 2',
+        nextText: 21
+      },
+      {
+        text: 'Torna agli ascensori',
+        nextText: 2
+      },
+    ]
+  },
+  {
+    id: 20,
+    text: 'La stanza è vuota, ma piccolo easter egg: il gioco è stato creato qui!',
+    options: [
+      {
+        text: 'Torna indietro',
+        nextText: 19
+      },
+    ]
+  },
+  {
+    id: 21,
+    text: 'La stanza è vuota, ma piccolo easter egg: il gioco è stato creato qui!',
+    options: [
+      {
+        text: 'Torna indietro',
+        nextText: 19
+      },
+    ]
+  },
 ]
 
 startGame()
