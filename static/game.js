@@ -69,6 +69,7 @@ const textNodes = [
       },
       {
         text: 'Ricevi indizio',
+        requiredState: (currentState) => currentState.hint,
         nextText: 50
       }
     ]
