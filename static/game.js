@@ -487,7 +487,7 @@ const textNodes = [
     ]
   },
 
-  // HINT + THE END
+  // HINT & THE END
   {
     id: 50,
     text: 'Per vincere il gioco hai bisogno di tutti gli oggetti che si trovano al piano terra. Nel caso non avessi visitato il secondo piano, l\'aula relax 2 ben 4 anni fa era chiamata "Giardino Zen".',
