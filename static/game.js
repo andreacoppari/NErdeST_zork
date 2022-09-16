@@ -66,6 +66,10 @@ const textNodes = [
       {
         text: 'Vai verso il corridoio',
         nextText: 3
+      },
+      {
+        text: 'Ricevi indizio',
+        nextText: 50
       }
     ]
   },
@@ -95,13 +99,13 @@ const textNodes = [
         text: '3',
         requiredState: (currentState) => currentState.floor !== 3,
         setState: { floor: 3 },
-        nextText: 1
+        nextText: 23
       },
       {
         text: '4',
         requiredState: (currentState) => currentState.floor !== 4,
         setState: { floor: 4 },
-        nextText: 1
+        nextText: 26
       },
     ]
   },
@@ -373,11 +377,134 @@ const textNodes = [
   },
   {
     id: 21,
-    text: 'La stanza è vuota, ma piccolo easter egg: il gioco è stato creato qui!',
+    text: 'Sulla lavagna leggi "Giardino Zen", la stanza è vuota',
     options: [
       {
         text: 'Torna indietro',
         nextText: 19
+      },
+      {
+        text: '?',
+        requiredState: (currentState) => currentState.pennarello && currentState.bigliettino,
+        setState: { password: true },
+        nextText: 22
+      },
+    ]
+  },
+  {
+    id: 22,
+    text: 'Il pennarello vola via dalla tua tasca. Lo spirito di un matematico che ancora aleggia in quella stanza lo raccoglie, va verso la lavagna e scrive "146", che sia la password di qualcosa?',
+    options: [
+      {
+        text: 'Torna indietro',
+        nextText: 19
+      },
+    ]
+  },
+
+  // FLOOR: 3
+  {
+    id: 23,
+    text: 'Ti trovi al terzo piano, senti dei rumori molesti provenire dall\'aula studio 3',
+    options: [
+      {
+        text: 'Entra in aula studio 3',
+        nextText: 24
+      },
+      {
+        text: 'Entra in aula relax 3',
+        nextText: 21
+      },
+      {
+        text: 'Torna agli ascensori',
+        nextText: 2
+      },
+    ]
+  },
+  {
+    id: 24,
+    text: 'In aula studio 3 stanno appendendo post-it alla parete "del pianto" in ricordo della sessione in studio 2. Su un tavolo c\'è un peluche di un polipetto.',
+    options: [
+      {
+        text: 'Raccogli il peluche e scappa',
+        nextText: 25
+      },
+      {
+        text: 'Torna indietro',
+        nextText: 23
+      },
+    ]
+  },
+  {
+    id: 25,
+    text: 'Senti delle urla in Barese provenire dall\'aula studio, prendere il polipetto è pericolosissimo. Corri.',
+    options: [
+      {
+        text: 'Torna agli ascensori',
+        nextText: 2
+      }
+    ]
+  },
+
+  // FLOOR: 4
+  {
+    id: 26,
+    text: 'Sei al quarto piano, non si sente nulla dal corridoio',
+    options: [
+      {
+        text: 'Entra in aula studio 4',
+        nextText: 27
+      },
+      {
+        text: 'Entra in aula relax 4',
+        nextText: 28
+      },
+      {
+        text: 'Torna agli ascensori',
+        nextText: 2
+      },
+    ]
+  },
+  {
+    id: 27,
+    text: 'Storicamente l\'aula dei giuristi. La stanza è vuota ma si sente l\'eco di un\'Onorevole presenza',
+    options: [
+      {
+        text: 'Saluta Didi e torna indietro',
+        nextText: 26
+      },
+    ]
+  },
+  {
+    id: 28,
+    text: 'Non c\'è nulla qui, ma ti sei meritato un\'indizio, torna nella hall del NEST per riceverlo.',
+    options: [
+      {
+        text: 'Torna indietro',
+        setState: { hint: true },
+        nextText: 26
+      },
+    ]
+  },
+
+  // HINT + THE END
+  {
+    id: 50,
+    text: 'Per vincere il gioco hai bisogno di tutti gli oggetti che si trovano al piano terra. Nel caso non avessi visitato il secondo piano, l\'aula relax 2 ben 4 anni fa era chiamata "Giardino Zen".',
+    options: [
+      {
+        text: 'Grazie!',
+        nextText: 1
+      },
+    ]
+  },
+  {
+    id: 100,
+    text: 'Si apre la porta e ti ritrovi catapultato al primo evento del NErdeST, complimenti per essere arrivato fino a questo punto! Scrivi "146 salsicce" ad @andreacoppari su Telegram per una ricompensa!',
+    options: [
+      {
+        text: 'Gioco finito! Se non hai esplorato tutto il NEST ricomincia il gioco per cercare gli easter egg che ti sei perso! (clicca qui)',
+        nextText: -1
       },
     ]
   },
