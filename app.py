@@ -1,9 +1,9 @@
 from flask import Flask, render_template
 
-app = Flask("secret-zork", static_folder='static')
+app = Flask(__name__, static_folder='static')
 
 @app.route("/")
-def run():
+def index():
     return render_template("index.html")
 
 
