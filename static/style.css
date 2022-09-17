@@ -39,6 +39,6 @@
     outline: none;
   }
   
-  .btn:hover {
+  .btn:active {
     background-color: #444;
   }
