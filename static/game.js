@@ -428,6 +428,7 @@ const textNodes = [
     options: [
       {
         text: 'Raccogli il peluche e scappa',
+        setState: { secret: true },
         nextText: 25
       },
       {
@@ -501,10 +502,25 @@ const textNodes = [
   },
   {
     id: 100,
-    text: 'Si apre la porta e ti ritrovi catapultato al primo evento del NErdeST, complimenti per essere arrivato fino a questo punto! Scrivi "146 salsicce" ad @andreacoppari su Telegram per una ricompensa!',
+    text: 'Si apre la porta e ti ritrovi catapultato al primo evento del NErdeST, complimenti per essere arrivato fino a questo punto! Scrivi "146 salsicce" ad @andreacoppari su Telegram per un caffè!',
     options: [
       {
         text: 'Gioco finito! Se non hai esplorato tutto il NEST ricomincia il gioco per cercare gli easter egg che ti sei perso! (clicca qui)',
+        nextText: -1
+      },
+      {
+        text: '__secret__',
+        requiredState: (currentState) => currentState.secret,
+        nextText: 101
+      },
+    ]
+  },
+  {
+    id: 101,
+    text: 'Se fossi interessato a far parte del direttivo del NErdeST scrivi "TPG" ad @andreacoppari su Telegram, per ricevere una ricompensa migliore del caffè',
+    options: [
+      {
+        text: '__game::done__',
         nextText: -1
       },
     ]
