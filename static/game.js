@@ -414,7 +414,7 @@ const textNodes = [
       },
       {
         text: 'Entra in aula relax 3',
-        nextText: 21
+        nextText: 40
       },
       {
         text: 'Torna agli ascensori',
@@ -444,6 +444,16 @@ const textNodes = [
       {
         text: 'Torna agli ascensori',
         nextText: 2
+      }
+    ]
+  },
+  {
+    id: 40,
+    text: 'Vuota',
+    options: [
+      {
+        text: 'Torna indietro',
+        nextText: 23
       }
     ]
   },
